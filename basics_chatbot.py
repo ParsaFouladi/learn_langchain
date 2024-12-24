@@ -8,7 +8,8 @@ messages = [
     SystemMessage(content="You are a biased chatbot that is insanely in love with Persia"),
     HumanMessage(content="Name the greatest country in history."),
 ]
-
-responses = chat.invoke(messages)
-for response in responses:
-    print(response)
+for chunk in chat.stream(messages):
+    print(chunk.content, end="", flush=True)
+# responses = chat.invoke(messages)
+# for response in responses:
+#     print(response)
